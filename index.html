@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Pyrolysis Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Industrial Pyrolysis Optimizer</h1>
+        <p>A high-accuracy tool to find the highest possible yield within your equipment's limits.</p>
+
+        <div class="card-group">
+            <div class="card biomass-card">
+                <h2>1. Biomass Properties</h2>
+                <form id="biomass-form">
+                    <div class="input-row"><label for="M">Moisture (M, %)</label><input type="number" id="M" step="0.01" required><label for="Ash">Ash (%, db)</label><input type="number" id="Ash" step="0.01" required></div>
+                    <div class="input-row"><label for="VM">Volatile Matter (VM, %)</label><input type="number" id="VM" step="0.1" required><label for="FC">Fixed Carbon (FC, %)</label><input type="number" id="FC" step="0.1" required></div>
+                    <div class="input-row"><label for="C">Carbon (C, %)</label><input type="number" id="C" step="0.01" required><label for="H">Hydrogen (H, %)</label><input type="number" id="H" step="0.01" required></div>
+                    <div class="input-row"><label for="O">Oxygen (O, %)</label><input type="number" id="O" step="0.01" required><label for="N">Nitrogen (N, %)</label><input type="number" id="N" step="0.01" required></div>
+                </form>
+            </div>
+
+            <div class="card params-card">
+                <h2>2. Process Parameters & Goal</h2>
+                <form id="params-form">
+                    <div class="input-row"><label for="PS">Particle Size (mm)</label><input type="number" id="PS" step="0.1" required><label for="FT">Final Temp (°C)</label><input type="number" id="FT" step="5" required></div>
+                    <div class="input-row"><label for="HR">Heating Rate (°C/min)</label><input type="number" id="HR" step="1" required><label for="FR">Flow Rate (mL/min)</label><input type="number" id="FR" step="5" required></div>
+                    <h3>Optimization Goal</h3>
+                    <label for="goal-yield">Maximize Target Yield:</label>
+                    <select id="goal-yield">
+                        <option value="Liquid phase" selected>Liquid phase (Bio-oil)</option>
+                        <option value="Solid phase">Solid phase (Bio-char)</option>
+                        <option value="Gas phase">Gas phase (Syngas)</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="card constraints-card">
+                <h2>3. Operational Constraints</h2>
+                <form id="constraints-form">
+                    <p class="constraints-info">Set the feasible min/max range for your reactor.</p>
+                    <div class="input-row"><label>Particle Size (mm)</label><div><input type="number" id="min_PS" value="0.1" step="0.01"><span>-</span><input type="number" id="max_PS" value="1.35" step="0.01"></div></div>
+                    <div class="input-row"><label>Final Temp (°C)</label><div><input type="number" id="min_FT" value="300" step="10"><span>-</span><input type="number" id="max_FT" value="900" step="10"></div></div>
+                    <div class="input-row"><label>Heating Rate (°C/min)</label><div><input type="number" id="min_HR" value="0" step="1"><span>-</span><input type="number" id="max_HR" value="50" step="1"></div></div>
+                    <div class="input-row"><label>Flow Rate (mL/min)</label><div><input type="number" id="min_FR" value="0" step="10"><span>-</span><input type="number" id="max_FR" value="500" step="10"></div></div>
+                </form>
+            </div>
+        </div>
+
+        <button type="button" id="optimize-button">Run Optimization</button>
+        
+        <div class="card results-card">
+            <h2>Optimization Results</h2>
+            <div id="results-output">
+                 <div class="results-table-container"><p>Enter your data and click "Run" to see recommendations.</p></div>
+                <div id="loading-spinner" class="hidden"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
