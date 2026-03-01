@@ -155,7 +155,11 @@ Includes:
 
 
 
-## 📂 Project Structure
+## 📁 Project Structure
+
+```bash
+project-name/
+│
 ├── app.py
 ├── pyrolysis_app.py
 ├── index.html
@@ -164,8 +168,7 @@ Includes:
 ├── pyrolysis.csv
 ├── Project Report.pdf
 └── README.md
-
----
+```
 
 ## ✨ Key Technical Features
 
