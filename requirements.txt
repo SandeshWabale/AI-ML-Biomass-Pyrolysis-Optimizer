@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+scikit-learn
+scipy
+xgboost
+fastapi
+pydantic
+uvicorn
