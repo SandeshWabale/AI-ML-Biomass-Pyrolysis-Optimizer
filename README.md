@@ -11,7 +11,6 @@ The system integrates chemical process understanding with data-driven modeling a
 🔗 **Streamlit Deployment:**  
 https://your-streamlit-app-link.streamlit.app  
 
-*(Replace with your actual deployed link.)*
 
 The live demo allows you to:
 
